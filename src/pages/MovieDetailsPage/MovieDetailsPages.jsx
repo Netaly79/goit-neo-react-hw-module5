@@ -1,5 +1,4 @@
-// MovieDetailsPage.js
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState, useRef } from "react";
 import {
   NavLink,
   Routes,
@@ -11,7 +10,7 @@ import {
 import { getMovieDetailsById } from "../../api";
 const MovieCast = lazy(() => import("../../components/MovieCast/MovieCast"));
 const MovieReview = lazy(() =>
-  import("../../components/MovieReview/MovieReview")
+  import("../../components/MovieReviews/MovieReviews")
 );
 
 import css from "./MovieDetailPage.module.css";
@@ -21,9 +20,9 @@ const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const btnRef = useRef();
 
   const previousLocation = location.state || "/movies";
-  console.log(location.state);
   let vote, imgPath;
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const MovieDetailsPage = () => {
 
   return (
     <Suspense>
-      <button onClick={() => navigate(previousLocation)} className={css.back}>
+      <button ref={btnRef} onClick={() => navigate(previousLocation)} className={css.back} >
         Go Back
       </button>
       <div className={css.info}>
@@ -70,13 +69,13 @@ const MovieDetailsPage = () => {
           <NavLink
             to={`/movies/${movieId}/cast`}
             className={css.subLink}
-            state={previousLocation}>
+            state={btnRef.current}>
             Cast
           </NavLink>
           <NavLink
             to={`/movies/${movieId}/review`}
             className={css.subLink}
-            state={previousLocation}>
+            state={btnRef.current}>
             Reviews
           </NavLink>
         </nav>
