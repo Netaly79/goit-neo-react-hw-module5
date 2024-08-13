@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.app {
+  width: 1140px;
+  margin: 0 auto;
+  
+}
+
+.nav {
+  padding: 20px 0;
+  border-bottom: 2px solid grey;
+  margin-bottom: 30px;
+}
