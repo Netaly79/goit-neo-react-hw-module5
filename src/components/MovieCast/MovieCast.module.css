@@ -17,8 +17,10 @@
   padding-bottom: 0px;
   font-weight: 600;
   margin: 0;
+  max-width: 200px;
 }
 
 .characterName {
   margin-top: 0;
+  max-width: 200px;
 }
