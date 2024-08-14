@@ -69,13 +69,13 @@ const MovieDetailsPage = () => {
           <NavLink
             to={`/movies/${movieId}/cast`}
             className={css.subLink}
-            state={btnRef.current}>
+            state={location}>
             Cast
           </NavLink>
           <NavLink
             to={`/movies/${movieId}/review`}
             className={css.subLink}
-            state={btnRef.current}>
+            state={location}>
             Reviews
           </NavLink>
         </nav>
